@@ -22,8 +22,6 @@ class drawrect(object):
         self.canvas = canvas
         self.id=canvas.create_rectangle(topx, topy, botx, boty, fill='', outline=color, tags=(s,'rect'),width=5)
 
-
-
 def open_img():
     global canvas
     global rect_id
@@ -42,7 +40,6 @@ def open_img():
     canvas.bind('<Button-1>', get_mouse_posn)
     canvas.bind('<B1-Motion>', update_sel_rect)
 
-
 def get_mouse_posn(event):
     global topy, topx,item
     z=0
@@ -52,7 +49,6 @@ def get_mouse_posn(event):
     tags = canvas.gettags(item)
     #print(tags)
 
-
 def update_sel_rect(event):
 
     global rect_id
@@ -61,7 +57,6 @@ def update_sel_rect(event):
     botx, boty = event.x, event.y
     canvas.coords(rect_id, topx, topy, botx, boty)
 
-
 def drrect():
     global canvas,a,k
     color1 = 'white'
@@ -69,19 +64,20 @@ def drrect():
     a[obj.id] = obj
     print(topx, topy, botx, boty)
 
-
 def new_tag():
     global item
     if item==1 or item==2:
         print(1)
     else:
         canvas.addtag_withtag(textExample.get("1.0", "end"), item)
+
 def delete_tag():
     global item
     if item == 1 or item == 2:
         print(1)
     else:
         canvas.dtag(item, textExample.get("1.0", "end"))
+
 def change_colors():
     colors = ["red", "orange", "yellow", "green", "blue", "violet"]
     canvas.itemconfigure(textExample.get("1.0", "end"), outline = random.choice(colors))
@@ -100,6 +96,7 @@ def delete_rectangle():
 def delete_img():
     canvas.destroy()
     list.clear(a)
+
 def lll():
     global a
     for i in a:
