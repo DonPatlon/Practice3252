@@ -9,7 +9,7 @@ topx, topy, botx, boty = 0, 0, 0, 0
 rect_id = None
 n = 0
 window = tk.Tk()
-window.title("ratatata")
+window.title("Выделение меток")
 window.geometry('%sx%s' % (WIDTH, HEIGHT))
 window.configure(background='grey')
 a = {}
