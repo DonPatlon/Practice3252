@@ -7,13 +7,13 @@ import random
 WIDTH, HEIGHT = 900, 900
 topx, topy, botx, boty = 0, 0, 0, 0
 rect_id = None
-n=0
+n = 0
 window = tk.Tk()
 window.title("ratatata")
 window.geometry('%sx%s' % (WIDTH, HEIGHT))
 window.configure(background='grey')
 a = {}
-k=[]
+k = []
 
 class drawrect(object):
     def __init__(self,canvas,topx, topy, botx, boty,color):
@@ -111,16 +111,16 @@ def lll():
 
 textExample=tk.Text(window, width=15, height=1)
 textExample.place(x=145, y=50)
-btn = Button(window, text='Открыть изображение', command=open_img).place(x=1, y=1)
-btn1 = Button(window, text='Выделить область ', command=drrect).place(x=140, y=1)
-btn2 = Button(window, text='Назначить выделение ', command=change_colors).place(x=6, y=50)
-btn3 = Button(window, text='Снять выделение ', command=change_colors1).place(x=275, y=50)
-btn4 = Button(window, text='Удалить картинку ', command=delete_img).place(x=1024, y=0)
-btn5 = Button(window, text='Удалить квадрат ', command=delete_rectangle).pack()
-btn6 = Button(window, text='Добавить тег', command=new_tag).pack()
-btn7 = Button(window, text='Удалить тег', command=delete_tag).pack()
-btn8 = Button(window, text='У тег', command=lll).pack()
-btn9 = Button(window, text='Super slaves', command=lll).pack()
+openImgBut = Button(window, text='Открыть изображение', command=open_img).place(x=1, y=1)
+highlightAreaBut = Button(window, text='Выделить область ', command=drrect).place(x=140, y=1)
+setAreaBut = Button(window, text='Назначить выделение ', command=change_colors).place(x=6, y=50)
+deleteAreaBut = Button(window, text='Снять выделение ', command=change_colors1).place(x=275, y=50)
+deleteImgBut = Button(window, text='Удалить картинку ', command=delete_img).place(x=1024, y=0)
+deleteSquareBut = Button(window, text='Удалить квадрат ', command=delete_rectangle).pack()
+setTagBut = Button(window, text='Добавить тег', command=new_tag).pack()
+deleteTagBut = Button(window, text='Удалить тег', command=delete_tag).pack()
+outputInfBut = Button(window, text='У тег', command=lll).pack()
+convertJSONTag = Button(window, text='Super slaves', command=lll).pack()
 
 
 window.mainloop()
