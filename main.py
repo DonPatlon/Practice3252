@@ -15,12 +15,15 @@ window.configure(background='grey')
 a = {}
 k = []
 
+
 class drawrect(object):
-    def __init__(self,canvas,topx, topy, botx, boty,color):
+    def __init__(self, canvas, topx, topy, botx, boty, color):
         global s
         s = textExample.get("1.0", "end")
         self.canvas = canvas
-        self.id=canvas.create_rectangle(topx, topy, botx, boty, fill='', outline=color, tags=(s,'rect'),width=5)
+        self.id = canvas.create_rectangle(
+            topx, topy, botx, boty, fill='', outline=color, tags=(s, 'rect'), width=5)
+
 
 def open_img():
     global canvas
@@ -40,14 +43,16 @@ def open_img():
     canvas.bind('<Button-1>', get_mouse_posn)
     canvas.bind('<B1-Motion>', update_sel_rect)
 
+
 def get_mouse_posn(event):
-    global topy, topx,item
-    z=0
+    global topy, topx, item
+    z = 0
     topx, topy = event.x, event.y
     item = canvas.find_closest(event.x, event.y)[0]
-    #print(item)
+    # print(item)
     tags = canvas.gettags(item)
-    #print(tags)
+    # print(tags)
+
 
 def update_sel_rect(event):
 
@@ -57,19 +62,22 @@ def update_sel_rect(event):
     botx, boty = event.x, event.y
     canvas.coords(rect_id, topx, topy, botx, boty)
 
+
 def drrect():
-    global canvas,a,k
+    global canvas, a, k
     color1 = 'white'
     obj = drawrect(canvas,  topx, topy, botx, boty, color1)
     a[obj.id] = obj
     print(topx, topy, botx, boty)
 
+
 def new_tag():
     global item
-    if item==1 or item==2:
+    if item == 1 or item == 2:
         print(1)
     else:
         canvas.addtag_withtag(textExample.get("1.0", "end"), item)
+
 
 def delete_tag():
     global item
@@ -78,24 +86,29 @@ def delete_tag():
     else:
         canvas.dtag(item, textExample.get("1.0", "end"))
 
+
 def change_colors():
     colors = ["red", "orange", "yellow", "green", "blue", "violet"]
-    canvas.itemconfigure(textExample.get("1.0", "end"), outline = random.choice(colors))
+    canvas.itemconfigure(textExample.get("1.0", "end"),
+                         outline=random.choice(colors))
 
 
 def change_colors1():
-    canvas.itemconfigure(textExample.get("1.0", "end"), outline = 'white')
+    canvas.itemconfigure(textExample.get("1.0", "end"), outline='white')
+
 
 def delete_rectangle():
     global item
-    if item==1 or item==2:
+    if item == 1 or item == 2:
         print(1)
     else:
         canvas.delete(item)
 
+
 def delete_img():
     canvas.destroy()
     list.clear(a)
+
 
 def lll():
     global a
@@ -105,15 +118,20 @@ def lll():
    # print(tags)
 
 
-
-textExample=tk.Text(window, width=15, height=1)
+textExample = tk.Text(window, width=15, height=1)
 textExample.place(x=145, y=50)
-openImgBut = Button(window, text='Открыть изображение', command=open_img).place(x=1, y=1)
-highlightAreaBut = Button(window, text='Выделить область ', command=drrect).place(x=140, y=1)
-setAreaBut = Button(window, text='Назначить выделение ', command=change_colors).place(x=6, y=50)
-deleteAreaBut = Button(window, text='Снять выделение ', command=change_colors1).place(x=275, y=50)
-deleteImgBut = Button(window, text='Удалить картинку ', command=delete_img).place(x=1024, y=0)
-deleteSquareBut = Button(window, text='Удалить квадрат ', command=delete_rectangle).pack()
+openImgBut = Button(window, text='Открыть изображение',
+                    command=open_img).place(x=1, y=1)
+highlightAreaBut = Button(window, text='Выделить область ',
+                          command=drrect).place(x=140, y=1)
+setAreaBut = Button(window, text='Назначить выделение ',
+                    command=change_colors).place(x=6, y=50)
+deleteAreaBut = Button(window, text='Снять выделение ',
+                       command=change_colors1).place(x=275, y=50)
+deleteImgBut = Button(window, text='Удалить картинку ',
+                      command=delete_img).place(x=1024, y=0)
+deleteSquareBut = Button(window, text='Удалить квадрат ',
+                         command=delete_rectangle).pack()
 setTagBut = Button(window, text='Добавить тег', command=new_tag).pack()
 deleteTagBut = Button(window, text='Удалить тег', command=delete_tag).pack()
 outputInfBut = Button(window, text='У тег', command=lll).pack()
