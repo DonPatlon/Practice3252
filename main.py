@@ -3,6 +3,7 @@ from PIL import ImageTk, Image
 import tkinter as tk
 from tkinter import filedialog
 import random
+import json
 
 WIDTH, HEIGHT = 900, 900
 topx, topy, botx, boty = 0, 0, 0, 0
@@ -12,7 +13,7 @@ window = tk.Tk()
 window.title("Выделение меток")
 window.geometry('%sx%s' % (WIDTH, HEIGHT))
 window.configure(background='grey')
-a = {}
+marks = {}
 k = []
 
 
@@ -64,10 +65,10 @@ def update_sel_rect(event):
 
 
 def drrect():
-    global canvas, a, k
+    global canvas, marks, k
     color1 = 'white'
     obj = drawrect(canvas,  topx, topy, botx, boty, color1)
-    a[obj.id] = obj
+    marks[obj.id] = obj
     print(topx, topy, botx, boty)
 
 
@@ -107,15 +108,22 @@ def delete_rectangle():
 
 def delete_img():
     canvas.destroy()
-    list.clear(a)
+    list.clear(marks)
 
 
 def lll():
-    global a
-    for i in a:
+    global marks
+    for i in marks:
         tags = canvas.gettags(i)
         print(tags)
    # print(tags)
+
+
+def saveToJSON():
+    global marks
+    with open("marks.json", "w") as jsonFile:
+        json.dump(canvas.gettags(marks.values), jsonFile)
+        print(canvas.gettags(marks.values))
 
 
 textExample = tk.Text(window, width=15, height=1)
@@ -135,7 +143,7 @@ deleteSquareBut = Button(window, text='Удалить квадрат ',
 setTagBut = Button(window, text='Добавить тег', command=new_tag).pack()
 deleteTagBut = Button(window, text='Удалить тег', command=delete_tag).pack()
 outputInfBut = Button(window, text='У тег', command=lll).pack()
-convertJSONTag = Button(window, text='Super slaves', command=lll).pack()
+convertJSONTag = Button(window, text='Super slaves', command=saveToJSON).pack()
 
 
 window.mainloop()
