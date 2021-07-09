@@ -144,6 +144,6 @@ setTagBut = Button(window, text='Добавить тег', command=new_tag).pack
 deleteTagBut = Button(window, text='Удалить тег', command=delete_tag).pack()
 # outputInfBut = Button(window, text='У тег', command=lll).pack()
 # convertJSONTag = Button(window, text='Super slaves', command=saveToJSON).pack()
-
+#КАКИЕ ТО ИЗМЕНЕНИЯ
 
 window.mainloop()
