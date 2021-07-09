@@ -111,19 +111,19 @@ def delete_img():
     list.clear(marks)
 
 
-def lll():
-    global marks
-    for i in marks:
-        tags = canvas.gettags(i)
-        print(tags)
-   # print(tags)
+# def lll():
+#     global marks
+#     for i in marks:
+#         tags = canvas.gettags(i)
+#         print(tags)
+#     print(tags)
 
 
-def saveToJSON():
-    global marks
-    with open("marks.json", "w") as jsonFile:
-        json.dump(canvas.gettags(marks.values), jsonFile)
-        print(canvas.gettags(marks.values))
+# def saveToJSON():
+#     global marks
+#     with open("marks.json", "w") as jsonFile:
+#         json.dump(canvas.gettags(marks.values), jsonFile)
+#         print(canvas.gettags(marks.values))
 
 
 textExample = tk.Text(window, width=15, height=1)
@@ -142,8 +142,8 @@ deleteSquareBut = Button(window, text='Удалить квадрат ',
                          command=delete_rectangle).pack()
 setTagBut = Button(window, text='Добавить тег', command=new_tag).pack()
 deleteTagBut = Button(window, text='Удалить тег', command=delete_tag).pack()
-outputInfBut = Button(window, text='У тег', command=lll).pack()
-convertJSONTag = Button(window, text='Super slaves', command=saveToJSON).pack()
+# outputInfBut = Button(window, text='У тег', command=lll).pack()
+# convertJSONTag = Button(window, text='Super slaves', command=saveToJSON).pack()
 
 
 window.mainloop()
